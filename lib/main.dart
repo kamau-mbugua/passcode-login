@@ -23,9 +23,9 @@ class _PinLoginState extends State<PinLogin> {
       body: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.blueAccent, Colors.blue],
-              begin: Alignment.topRight,
-            )),
+          colors: [Colors.blueAccent, Colors.blue],
+          begin: Alignment.topRight,
+        )),
         child: pinScreen(),
       ),
     );
@@ -75,8 +75,38 @@ class _pinScreenState extends State<pinScreen> {
             ),
           ),
           buildNumberPad(),
+          forgortPasswordText(),
         ],
       ),
+    );
+  }
+
+  forgortPasswordText() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Text(
+            "Forgot your Pin ?",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 21.0,
+                fontWeight: FontWeight.bold),
+          ),
+        ),
+        SizedBox(width: 7.0,),
+        Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Text(
+            "Reset Here!",
+            style: TextStyle(
+                color: Colors.purple,
+                fontSize: 21.0,
+                fontWeight: FontWeight.bold),
+          ),
+        )
+      ],
     );
   }
 
@@ -133,7 +163,6 @@ class _pinScreenState extends State<pinScreen> {
   }
 
   buildNumberPad() {
-
     int n;
     return Expanded(
       child: Container(
@@ -147,45 +176,22 @@ class _pinScreenState extends State<pinScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   KeyBoardNumber(
-                    n:1,
-                    onPressed:() {
-                  pinIndexSetup("1");
-                  },
+                    n: 1,
+                    onPressed: () {
+                      pinIndexSetup("1");
+                    },
                   ),
                   KeyBoardNumber(
-                    n:2,
-                    onPressed:() {
-                  pinIndexSetup("2");
-                  },
+                    n: 2,
+                    onPressed: () {
+                      pinIndexSetup("2");
+                    },
                   ),
                   KeyBoardNumber(
-                    n : 3,
-                    onPressed:() {
-                  pinIndexSetup("3");
-                  },
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  KeyBoardNumber(
-                    n : 4,
-                    onPressed:() {
-                  pinIndexSetup("4");
-                  },
-                  ),
-                  KeyBoardNumber(
-                    n : 5,
-                    onPressed : () {
-                  pinIndexSetup("5");
-                  },
-                  ),
-                  KeyBoardNumber(
-                    n : 6,
-                    onPressed : () {
-                  pinIndexSetup("6");
-                  },
+                    n: 3,
+                    onPressed: () {
+                      pinIndexSetup("3");
+                    },
                   ),
                 ],
               ),
@@ -193,22 +199,45 @@ class _pinScreenState extends State<pinScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   KeyBoardNumber(
-                    n : 7,
-                    onPressed : () {
-                  pinIndexSetup("7");
-                  },
+                    n: 4,
+                    onPressed: () {
+                      pinIndexSetup("4");
+                    },
                   ),
                   KeyBoardNumber(
-                    n : 8,
-                    onPressed:() {
-                  pinIndexSetup("8");
-                  },
+                    n: 5,
+                    onPressed: () {
+                      pinIndexSetup("5");
+                    },
                   ),
                   KeyBoardNumber(
-                    n : 9,
-                    onPressed : () {
-                  pinIndexSetup("9");
-                  },
+                    n: 6,
+                    onPressed: () {
+                      pinIndexSetup("6");
+                    },
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  KeyBoardNumber(
+                    n: 7,
+                    onPressed: () {
+                      pinIndexSetup("7");
+                    },
+                  ),
+                  KeyBoardNumber(
+                    n: 8,
+                    onPressed: () {
+                      pinIndexSetup("8");
+                    },
+                  ),
+                  KeyBoardNumber(
+                    n: 9,
+                    onPressed: () {
+                      pinIndexSetup("9");
+                    },
                   ),
                 ],
               ),
@@ -218,15 +247,24 @@ class _pinScreenState extends State<pinScreen> {
                   Container(
                     width: 60.0,
                     child: MaterialButton(
-                      onPressed: null,
-                      child: SizedBox(),
+                      height: 60.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(60.0),
+                      ),
+                      onPressed: () {
+                        confirmPin();
+                      },
+                      child: Image.asset(
+                        "assets/images/check.png",
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                   KeyBoardNumber(
-                    n : 0,
-                    onPressed : () {
-                  pinIndexSetup("0");
-                  },
+                    n: 0,
+                    onPressed: () {
+                      pinIndexSetup("0");
+                    },
                   ),
                   Container(
                     width: 60.0,
@@ -234,13 +272,14 @@ class _pinScreenState extends State<pinScreen> {
                       height: 60.0,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(60.0),
-
                       ),
                       onPressed: () {
                         clearPin();
                       },
-                      child: Image.asset("assets/images/backspace.png",
-                        color: Colors.white,),
+                      child: Image.asset(
+                        "assets/images/backspace.png",
+                        color: Colors.white,
+                      ),
                     ),
                   )
                 ],
@@ -264,17 +303,14 @@ class _pinScreenState extends State<pinScreen> {
   void pinIndexSetup(String s) {
     if (pinIndex == 0) {
       pinIndex = 1;
-    }
-    else if (pinIndex < 4)
-      pinIndex++;
+    } else if (pinIndex < 4) pinIndex++;
     setPin(pinIndex, s);
     currentPin[pinIndex - 1] = s;
     String strpin = "";
     currentPin.forEach((element) {
       strpin += element;
     });
-    if (pinIndex == 4)
-      print(strpin);
+    if (pinIndex == 4) print(strpin);
   }
 
   setPin(int /*pinIndex*/ n, String s) {
@@ -300,14 +336,15 @@ class _pinScreenState extends State<pinScreen> {
     else if (pinIndex == 4) {
       setPin(pinIndex, " ");
       currentPin[pinIndex - 1] = "";
-      pinIndex --;
+      pinIndex--;
     } else {
       setPin(pinIndex, "");
       currentPin[pinIndex - 1] = "";
-      pinIndex --;
+      pinIndex--;
     }
   }
 
+  void confirmPin() {}
 }
 
 class PinNumber extends StatelessWidget {
@@ -349,11 +386,9 @@ class KeyBoardNumber extends StatelessWidget {
 
   final Function() onPressed;
 
-
   KeyBoardNumber({this.n, this.onPressed});
 
   /* KeyBoardNumber({this.n, this.onPressed});*/
-
 
   @override
   Widget build(BuildContext context) {
@@ -370,15 +405,13 @@ class KeyBoardNumber extends StatelessWidget {
         onPressed: onPressed,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(60.0),
-
         ),
         height: 90.0,
-        child: Text("$n",
+        child: Text(
+          "$n",
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 24 * MediaQuery
-                .of(context)
-                .textScaleFactor,
+            fontSize: 24 * MediaQuery.of(context).textScaleFactor,
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
@@ -387,4 +420,3 @@ class KeyBoardNumber extends StatelessWidget {
     );
   }
 }
-

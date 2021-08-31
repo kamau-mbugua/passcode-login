@@ -326,6 +326,8 @@ class PinNumber extends StatelessWidget {
         controller: textEditingController,
         enabled: true,
         obscureText: true,
+        showCursor: true,
+        readOnly: true,
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.all(16.0),

@@ -23,7 +23,7 @@ class _PinLoginState extends State<PinLogin> {
       body: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
-          colors: [Colors.blueAccent, Colors.blue],
+          colors: [Colors.white54, Colors.white70],
           begin: Alignment.topRight,
         )),
         child: pinScreen(),
@@ -90,7 +90,7 @@ class _pinScreenState extends State<pinScreen> {
           child: Text(
             "Forgot your Pin ?",
             style: TextStyle(
-                color: Colors.white,
+                color: Colors.black54,
                 fontSize: 21.0,
                 fontWeight: FontWeight.bold),
           ),
@@ -101,7 +101,7 @@ class _pinScreenState extends State<pinScreen> {
           child: Text(
             "Reset Here!",
             style: TextStyle(
-                color: Colors.purple,
+                color: Colors.lightBlue,
                 fontSize: 21.0,
                 fontWeight: FontWeight.bold),
           ),
@@ -134,7 +134,7 @@ class _pinScreenState extends State<pinScreen> {
     return Text(
       "Security Pin",
       style: TextStyle(
-          color: Colors.white70, fontSize: 21.0, fontWeight: FontWeight.bold),
+          color: Colors.black45, fontSize: 21.0, fontWeight: FontWeight.bold),
     );
   }
 
@@ -256,7 +256,7 @@ class _pinScreenState extends State<pinScreen> {
                       },
                       child: Image.asset(
                         "assets/images/check.png",
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -278,7 +278,7 @@ class _pinScreenState extends State<pinScreen> {
                       },
                       child: Image.asset(
                         "assets/images/backspace.png",
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                   )
@@ -373,7 +373,7 @@ class PinNumber extends StatelessWidget {
           fillColor: Colors.white38,
         ),
         style: TextStyle(
-            fontWeight: FontWeight.bold, fontSize: 21.0, color: Colors.white),
+            fontWeight: FontWeight.bold, fontSize: 21.0, color: Colors.black45),
       ),
     );
   }
@@ -412,7 +412,7 @@ class KeyBoardNumber extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 24 * MediaQuery.of(context).textScaleFactor,
-            color: Colors.white,
+            color: Colors.grey,
             fontWeight: FontWeight.bold,
           ),
         ),

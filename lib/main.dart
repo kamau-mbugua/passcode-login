@@ -58,7 +58,8 @@ class _pinScreenState extends State<pinScreen> {
     return SafeArea(
       child: Column(
         children: <Widget>[
-          buildExitButton(),
+          profileImage(),
+          profileName(),
           Expanded(
             child: Container(
               alignment: Alignment(0, 0.5),
@@ -79,6 +80,22 @@ class _pinScreenState extends State<pinScreen> {
           forgortPasswordText(),
         ],
       ),
+    );
+  }
+
+  profileName(){
+
+  }
+
+  profileImage(){
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Padding(padding: const EdgeInsets.all(8.0),
+        child: Image.asset("assets/images/personimage.png",
+        width: 70.0,
+        height: 50.0,),)
+      ],
     );
   }
 
@@ -105,26 +122,6 @@ class _pinScreenState extends State<pinScreen> {
                 color: Colors.lightBlue,
                 fontSize: 21.0,
                 fontWeight: FontWeight.bold),
-          ),
-        )
-      ],
-    );
-  }
-
-  buildExitButton() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: MaterialButton(
-            onPressed: () {},
-            height: 50.0,
-            minWidth: 50.0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50.0),
-            ),
-            //child: ,
           ),
         )
       ],

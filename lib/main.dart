@@ -361,7 +361,7 @@ class _pinScreenState extends State<pinScreen> {
 
   void confirmPin() {
 
-    if(){
+    if(currentPin.isEmpty){
       //print("Pin is required to proceed");
 
       Toast.show("Pin is required to proceed", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);

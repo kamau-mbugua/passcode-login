@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -21,12 +19,14 @@ class _PinLoginState extends State<PinLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //backgroundColor: Colors.white70,
+
       body: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
-          colors: [Colors.white54, Colors.white70],
-          begin: Alignment.topRight,
-        )),
+              colors: [Colors.white54, Colors.white70],
+              begin: Alignment.topRight,
+            )),
         child: pinScreen(),
       ),
     );
@@ -84,7 +84,11 @@ class _pinScreenState extends State<pinScreen> {
   }
 
   profileName(){
-
+    return Text(
+      "John Doe",
+      style: TextStyle(
+          color: Colors.black45, fontSize: 18.0, fontWeight: FontWeight.bold),
+    );
   }
 
   profileImage(){
@@ -161,12 +165,11 @@ class _pinScreenState extends State<pinScreen> {
   }
 
   buildNumberPad() {
-    int n;
     return Expanded(
       child: Container(
         alignment: Alignment.bottomCenter,
         child: Padding(
-          padding: const EdgeInsets.only(bottom: 32),
+          padding: const EdgeInsets.only(bottom: 10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[

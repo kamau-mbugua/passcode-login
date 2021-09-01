@@ -53,6 +53,8 @@ class _pinScreenState extends State<pinScreen> {
 
   int pinIndex = 0;
 
+  bool loading = false;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -166,10 +168,11 @@ class _pinScreenState extends State<pinScreen> {
 
   buildNumberPad() {
     return Expanded(
+
       child: Container(
         alignment: Alignment.bottomCenter,
         child: Padding(
-          padding: const EdgeInsets.only(bottom: 10),
+          padding: const EdgeInsets.only(bottom: 5.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -245,9 +248,12 @@ class _pinScreenState extends State<pinScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Container(
+
+
+              Container(
                     width: 60.0,
                     child: MaterialButton(
+
                       height: 60.0,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(60.0),
@@ -332,9 +338,10 @@ class _pinScreenState extends State<pinScreen> {
   }
 
   void clearPin() {
-    if (pinIndex == 0)
+    if (pinIndex == 0) {
       pinIndex = 0;
-    else if (pinIndex == 4) {
+    }
+    else if (pinIndex == 5) {
       setPin(pinIndex, " ");
       currentPin[pinIndex - 1] = "";
       pinIndex--;
@@ -345,7 +352,14 @@ class _pinScreenState extends State<pinScreen> {
     }
   }
 
-  void confirmPin() {}
+  void confirmPin() {
+
+
+
+    setState(() {
+
+    });
+  }
 }
 
 class PinNumber extends StatelessWidget {

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:toast/toast.dart';
+
 
 void main() {
   runApp(MaterialApp(
@@ -71,7 +73,7 @@ class _pinScreenState extends State<pinScreen> {
                 children: <Widget>[
                   buildSecurityText(),
                   SizedBox(
-                    height: 40.0,
+                    height: 25.0,
                   ),
                   buildPinRow(),
                 ],
@@ -136,7 +138,7 @@ class _pinScreenState extends State<pinScreen> {
 
   buildSecurityText() {
     return Text(
-      "Security Pin",
+      "Enter your Security Pin",
       style: TextStyle(
           color: Colors.black45, fontSize: 21.0, fontWeight: FontWeight.bold),
     );
@@ -338,6 +340,11 @@ class _pinScreenState extends State<pinScreen> {
   }
 
   void clearPin() {
+
+
+    //_showToast(context);
+
+
     if (pinIndex == 0) {
       pinIndex = 0;
     }
@@ -354,11 +361,23 @@ class _pinScreenState extends State<pinScreen> {
 
   void confirmPin() {
 
+    if(){
+      //print("Pin is required to proceed");
 
+      Toast.show("Pin is required to proceed", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
 
-    setState(() {
+      _showToast(context);
+    }
+  }
 
-    });
+  void _showToast(BuildContext context) {
+    final scaffold = ScaffoldMessenger.of(context);
+    scaffold.showSnackBar(
+      SnackBar(
+        content: const Text('Pin is required to proceed.'),
+        action: SnackBarAction(label: 'OK', onPressed: scaffold.hideCurrentSnackBar),
+      ),
+    );
   }
 }
 
